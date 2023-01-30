@@ -16,4 +16,5 @@ public class HealthController {
     public ResponseEntity<GeneralResponse> heartbeat() {
         return ResponseEntity.ok(GeneralResponse.builder().message(HEARTBEAT_GREETING_MESSAGE).status(HttpStatus.OK.value()).build());
     }
+
 }
