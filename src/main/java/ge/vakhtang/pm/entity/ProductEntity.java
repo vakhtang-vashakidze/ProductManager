@@ -1,5 +1,6 @@
 package ge.vakhtang.pm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class ProductEntity {
     @PositiveOrZero
     private Integer quantity;
 
+    @JsonIgnore
     @ManyToOne
     private UserEntity user;
 }
