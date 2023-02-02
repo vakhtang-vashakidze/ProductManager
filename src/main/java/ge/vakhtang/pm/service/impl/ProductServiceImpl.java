@@ -33,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
         ProductEntity productEntity = new ProductEntity();
         productEntity.setName(request.getName());
         productEntity.setQuantity(request.getQuantity());
+        productEntity.setDescription(request.getDescription());
         UserEntity userEntity = userRepository.getUserEntityByUsername(request.getUsername());
         productEntity.setUser(userEntity);
         productRepository.save(productEntity);

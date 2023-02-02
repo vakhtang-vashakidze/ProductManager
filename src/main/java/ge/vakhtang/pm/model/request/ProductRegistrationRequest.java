@@ -13,4 +13,6 @@ public class ProductRegistrationRequest {
     private Integer quantity;
     @NotBlank
     private String username;
+    @NotBlank
+    private String description;
 }

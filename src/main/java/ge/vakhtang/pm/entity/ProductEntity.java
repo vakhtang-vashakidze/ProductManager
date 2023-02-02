@@ -21,6 +21,9 @@ public class ProductEntity {
     @NotBlank
     private String name;
 
+    @NotBlank
+    private String description;
+
     @PositiveOrZero
     private Integer quantity;
 
