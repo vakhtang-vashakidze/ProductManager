@@ -8,7 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
-@Entity
+@Entity(name = "USERS")
 @Data
 @ToString
 public class UserEntity {
@@ -31,6 +31,6 @@ public class UserEntity {
 
     private boolean verified;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<ProductEntity> products;
 }
