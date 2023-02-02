@@ -6,7 +6,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity(name = "PRODUCTS")
@@ -20,13 +22,12 @@ public class ProductEntity {
 
     @NotBlank
     private String name;
-
+    @NotNull
+    private LocalDateTime registrationTime;
     @NotBlank
     private String description;
-
     @PositiveOrZero
     private Integer quantity;
-    
     @PositiveOrZero
     private Double price;
 

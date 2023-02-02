@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -38,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
         productEntity.setQuantity(request.getQuantity());
         productEntity.setDescription(request.getDescription());
         productEntity.setPrice(request.getPrice());
+        productEntity.setRegistrationTime(LocalDateTime.now());
         UserEntity userEntity = userRepository.getUserEntityByUsername(request.getUsername());
         CurrencyEntity currencyEntity = currencyRepository.getByCode(request.getCurrencyCode());
         //TODO replace later
