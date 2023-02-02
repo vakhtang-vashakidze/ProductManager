@@ -26,6 +26,9 @@ public class ProductEntity {
 
     @PositiveOrZero
     private Integer quantity;
+    
+    @PositiveOrZero
+    private Double price;
 
     @JsonIgnore
     @ManyToOne
@@ -33,4 +36,7 @@ public class ProductEntity {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ProductAttributeEntity> attributes;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private CurrencyEntity currency;
 }

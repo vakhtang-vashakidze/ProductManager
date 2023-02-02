@@ -1,10 +1,12 @@
 package ge.vakhtang.pm.service.impl;
 
+import ge.vakhtang.pm.entity.CurrencyEntity;
 import ge.vakhtang.pm.entity.ProductAttributeEntity;
 import ge.vakhtang.pm.entity.ProductEntity;
 import ge.vakhtang.pm.entity.UserEntity;
 import ge.vakhtang.pm.model.request.AddProductAttributesRequest;
 import ge.vakhtang.pm.model.request.ProductRegistrationRequest;
+import ge.vakhtang.pm.repository.CurrencyRepository;
 import ge.vakhtang.pm.repository.ProductRepository;
 import ge.vakhtang.pm.repository.UserRepository;
 import ge.vakhtang.pm.service.ProductService;
@@ -27,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final CurrencyRepository currencyRepository;
 
     @Override
     public void registerNewProduct(ProductRegistrationRequest request) {
@@ -34,7 +37,15 @@ public class ProductServiceImpl implements ProductService {
         productEntity.setName(request.getName());
         productEntity.setQuantity(request.getQuantity());
         productEntity.setDescription(request.getDescription());
+        productEntity.setPrice(request.getPrice());
         UserEntity userEntity = userRepository.getUserEntityByUsername(request.getUsername());
+        CurrencyEntity currencyEntity = currencyRepository.getByCode(request.getCurrencyCode());
+        //TODO replace later
+        if (currencyEntity == null) {
+            currencyEntity = new CurrencyEntity();
+            currencyEntity.setCode(request.getCurrencyCode());
+        }
+        productEntity.setCurrency(currencyEntity);
         productEntity.setUser(userEntity);
         productRepository.save(productEntity);
         productRepository.flush();

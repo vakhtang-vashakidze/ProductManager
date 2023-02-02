@@ -9,10 +9,14 @@ import javax.validation.constraints.PositiveOrZero;
 public class ProductRegistrationRequest {
     @NotBlank
     private String name;
+    @NotBlank
+    private String description;
+    @PositiveOrZero
+    private Double price;
     @PositiveOrZero
     private Integer quantity;
     @NotBlank
-    private String username;
+    private String currencyCode;
     @NotBlank
-    private String description;
+    private String username;
 }
